@@ -9,32 +9,22 @@ metadata:
 spec:
   type: app
   compatibility:
-    - python
+    - typescript
   about: docs/about.md
   implementation: docs/implementation.md
   release-notes: docs/release-notes-0.0.1.md
   requirements: docs/requirements.md
   single-use: False
   technologies: # Ref: https://docs.stackspot.com/create-use/create-content/yaml-files/plugin-yaml/#technologies-1
-    - Api
+    - name: nestjs
+      version: 7.0.0
   stk-projects-only: false
   inputs:
-    - label: Type name of your resource
-      name: resource
+    - label: Name of the new entity
+      name: model_name
       type: text
       required: true
       default: Client
-      pattern: '([A-Z][a-z]+)+'
-      help: 'Inform your resource name (e.g.: Client)'
-    - label: Choose http method of new endpoint
-      name: method
-      type: text
-      items:
-        - GET
-        - POST
-        - PUT
-        - DELETE
-        - PATCH
-      default: GET
-      required: true
-      help: 'Inform the method of the endpoint (e.g.: post or delete)'
+      pattern: '^[a-z_]+$'
+      help: 'Name of the entity, using snake_case, like "cliente" or "cliente_telefone". Será usado para nomear a pasta, arquivos e tabelas'
+  
